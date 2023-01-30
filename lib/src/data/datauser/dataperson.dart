@@ -81,103 +81,103 @@ class DataUser {
       "$DateFormat.jm().format(DateTime.now()), $DateFormat.yMMMMd().format(DateTime.now())";
 
   List<Map<String, String>> logabsen = [
-    // {
-    //   'nama': 'Arum',
-    //   'checkin':
-    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
-    //   'checkout':
-    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
-    // },
-    // {
-    //   'nama': 'Arum',
-    //   'checkin':
-    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
-    //   'checkout':
-    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
-    // },
-    // {
-    //   'nama': 'Arum',
-    //   'checkin':
-    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
-    //   'checkout':
-    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
-    // },
-    // {
-    //   'nama': 'Arum',
-    //   'checkin':
-    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
-    //   'checkout':
-    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
-    // },
-    // {
-    //   'nama': 'Arum',
-    //   'checkin':
-    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
-    //   'checkout':
-    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
-    // },
-    // {
-    //   'nama': 'Arum',
-    //   'checkin':
-    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
-    //   'checkout':
-    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
-    // },
-    // {
-    //   'nama': 'Arum',
-    //   'checkin':
-    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
-    //   'checkout':
-    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
-    // },
-    // {
-    //   'nama': 'Arum',
-    //   'checkin':
-    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
-    //   'checkout':
-    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
-    // },
-    // {
-    //   'nama': 'Arum',
-    //   'checkin':
-    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
-    //   'checkout':
-    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
-    // },
-    // {
-    //   'nama': 'Arum',
-    //   'checkin':
-    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
-    //   'checkout':
-    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
-    // },
-    // {
-    //   'nama': 'Arum',
-    //   'checkin':
-    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
-    //   'checkout':
-    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
-    // },
-    // {
-    //   'nama': 'Arum',
-    //   'checkin':
-    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
-    //   'checkout':
-    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
-    // },
-    // {
-    //   'nama': 'Arum',
-    //   'checkin':
-    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
-    //   'checkout':
-    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
-    // },
-    // {
-    //   'nama': 'Arum',
-    //   'checkin':
-    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
-    //   'checkout':
-    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
-    // },
+    {
+      'nama': 'Arum',
+      'checkin':
+          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
+      'checkout':
+          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
+    },
+    {
+      'nama': 'Arum',
+      'checkin':
+          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
+      'checkout':
+          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
+    },
+    {
+      'nama': 'Arum',
+      'checkin':
+          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
+      'checkout':
+          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
+    },
+    {
+      'nama': 'Arum',
+      'checkin':
+          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
+      'checkout':
+          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
+    },
+    {
+      'nama': 'Arum',
+      'checkin':
+          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
+      'checkout':
+          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
+    },
+    {
+      'nama': 'Arum',
+      'checkin':
+          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
+      'checkout':
+          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
+    },
+    {
+      'nama': 'Arum',
+      'checkin':
+          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
+      'checkout':
+          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
+    },
+    {
+      'nama': 'Arum',
+      'checkin':
+          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
+      'checkout':
+          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
+    },
+    {
+      'nama': 'Arum',
+      'checkin':
+          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
+      'checkout':
+          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
+    },
+    {
+      'nama': 'Arum',
+      'checkin':
+          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
+      'checkout':
+          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
+    },
+    {
+      'nama': 'Arum',
+      'checkin':
+          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
+      'checkout':
+          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
+    },
+    {
+      'nama': 'Arum',
+      'checkin':
+          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
+      'checkout':
+          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
+    },
+    {
+      'nama': 'Arum',
+      'checkin':
+          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
+      'checkout':
+          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
+    },
+    {
+      'nama': 'Arum',
+      'checkin':
+          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
+      'checkout':
+          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
+    },
   ];
 }
