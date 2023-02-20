@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ColorTheme {
+class KColorTheme {
   static MaterialColor warnaUtama = const MaterialColor(
     0xFFD10234,
     <int, Color>{
@@ -19,10 +19,6 @@ class ColorTheme {
 
   static Color warnaDasar = const Color.fromARGB(255, 209, 2, 52);
   static Color warnaAbu = const Color.fromARGB(255, 244, 244, 244);
-  static Color warnaHijau = const Color.fromARGB(
-    255,
-    68,
-    171,
-    149,
-  );
+  static Color warnaHijau = const Color.fromARGB(255, 68, 171, 149);
+  static Color warnaHitam = const Color.fromARGB(66, 24, 22, 22);
 }
