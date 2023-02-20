@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:zainozoho/src/theme/color.dart'; //import kelas color
-import 'package:zainozoho/src/components/inputtext.dart'; //import kelas textfield
-import 'package:zainozoho/src/components/button.dart'; //import kelas button
+import '../components/inputtext.dart'; //import kelas textfield
+import '../components/button.dart'; //import kelas button
+import '../login/lupasandi/lupasandi.dart'; //import kelas lupa sandi
+import '../theme/color.dart'; //import kelas color
+import '../controller/loginlogic.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -12,47 +14,118 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final textfield = KTextField(); //inisialisasi objek untuk kelas textfield
-  final button = KButton();
-
-  bool _tampilsandi = true; //inisialisasi variable tampilsandi
+  final button = KButton(); //inisialisasi objek untuk kelas button
+  final emailcontroller =
+      TextEditingController(); //inisialisasi email controller
+  final passwordcontroller =
+      TextEditingController(); //inisialisasi password controller
+  static bool tampilsandi = true; //boolean untuk tampil kata sandi
+  final logika = LogicMasuk(); //inisialisasi objek untuk kelas logicmasuk
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: ListView(
-          padding: const EdgeInsets.all(20),
-          children: [
-            Image.asset('assets/images/splash.png'), //Logo Peduly
-            const SizedBox(height: 20),
-            Text(
-              'Masuk',
-              style: TextStyle(
-                  color: KColorTheme.warnaHitam, fontSize: 40), //Text Masuk
-            ),
-            Text(
-              'Untuk mengakses Zainzo People',
-              style: TextStyle(
-                  color: KColorTheme
-                      .warnaHitam), //Text Untuk mengakses Zainzo People
-            ),
-            const SizedBox(height: 20),
-            textfield.kUsernameField(), //TextField Email
-            const SizedBox(height: 20),
-            textfield.kUserPasswordField(
-              () => setState(
-                () {
-                  _tampilsandi = !_tampilsandi; //setstate tampil sandi
+      body: ListView(
+        //saya beri listview agar saat keyboard muncul dan tidak mengganggu layout
+        padding: const EdgeInsets.only(top: 50, left: 23, right: 23),
+        children: [
+          const SizedBox(height: 50),
+
+          //Stack image karna gambar image terlalu besar maka saya tumpuk dia dengan widget yang lain
+          Stack(
+            alignment: Alignment.center,
+            children: [Image.asset('assets/images/logo.png')],
+          ), //Logo Peduly
+          const SizedBox(height: 50),
+
+          //Text Masuk pada login
+          const Text(
+            'Masuk',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.black87,
+              fontFamily: 'Inter',
+              fontWeight: FontWeight.bold,
+              fontSize: 40,
+            ), //Text Masuk
+          ),
+
+          //Teks Untuk mengakses zainzo people
+          const Text(
+            'Untuk mengakses Zainzo People',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                fontFamily: 'Inter',
+                color: Colors.black87), //Text Untuk mengakses Zainzo People
+          ),
+          const SizedBox(height: 20),
+
+          //Text Input form Email
+          textfield.kUsernameField(
+              controller: emailcontroller), //TextField Email
+          const SizedBox(height: 20),
+
+          //Text Input form password
+          TextFormField(
+            autofillHints: const [AutofillHints.password],
+            obscureText: tampilsandi,
+            textInputAction: TextInputAction.send,
+            validator: (e) {
+              if (e!.isEmpty) {
+                return "Harap Masukkan Password";
+              }
+              return null;
+            },
+            controller: passwordcontroller, //controller password
+            decoration: InputDecoration(
+              hintText: "Password",
+              suffixIcon: IconButton(
+                onPressed: () {
+                  setState(() {
+                    tampilsandi = !tampilsandi;
+                  });
                 },
+                icon: Icon(
+                  tampilsandi
+                      ? Icons.visibility_outlined
+                      : Icons.visibility_off_outlined,
+                  color: KColorTheme.warnaUtama,
+                ),
+              ),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(15),
               ),
             ),
-            button.kTextButton(
-                'Lupa Password?', () => null), //TextButton lupa sandi
-            const SizedBox(height: 100),
-            //Button Masuk
-          ],
+          ),
+          const SizedBox(height: 20),
+          button.kTextButton(
+            'Lupa Password?',
+            () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const LupaSandi(),
+              ),
+            ),
+          ), //TextButton lupa sandi
+          //Button Masuk
+        ],
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(15),
+        child: button.kElevetedButton(
+          "Masuk",
+          () {
+            // print(emailcontroller.text); //sebagai debug saat email ditekan
+            // print(passwordcontroller.text); //sebagai debug saat password ditekan
+            logika.logicmasuk(
+                contexts: context,
+                email: emailcontroller,
+                password: passwordcontroller,
+                emaildummy: "soho@email.com",
+                passworddummy: "1");
+          },
         ),
-        bottomNavigationBar:
-            button.kElevetedButton("Masuk", () => null) //Button Masuk
-        );
+      ), //Button Masuk
+    );
   }
 }
