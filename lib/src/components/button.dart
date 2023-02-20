@@ -3,6 +3,8 @@ import 'package:zainozoho/src/theme/color.dart'; //import kelas color
 // import 'package:rounded_loading_button/rounded_loading_button.dart';
 
 class KButton {
+  final ButtonStyle style =
+      ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
   //TextButton
   TextButton kTextButton(String judul, Function() onpressing) {
     return TextButton(
@@ -17,10 +19,17 @@ class KButton {
   //ElevetedButton
   ElevatedButton kElevetedButton(String judul, Function() onpressing) {
     return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15), // <-- Radius
+          ),
+          backgroundColor: KColorTheme.warnaUtama.shade600,
+          padding: const EdgeInsets.all(10) // Background color
+          ),
       onPressed: onpressing,
-      child: Text(
-        judul,
-        style: const TextStyle(color: Colors.white),
+      child: const Text(
+        'Masuk',
+        style: TextStyle(fontSize: 20, color: Colors.white),
       ),
     );
   }
