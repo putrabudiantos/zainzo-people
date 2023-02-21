@@ -30,7 +30,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_svg: ^2.0.0+1
+  flutter_svg: ^2.0.1
   flutter_rounded_date_picker: ^3.0.2
   glassmorphism: ^3.0.0
   glassmorphism_widgets: ^0.1.4

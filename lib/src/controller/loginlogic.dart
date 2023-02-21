@@ -17,7 +17,7 @@ class LogicMasuk {
       Navigator.pushReplacement(
         contexts!,
         MaterialPageRoute(
-          builder: (contexts) => const MainPage(),
+          builder: (contexts) => const NavMainPage(),
         ),
       );
     } else if (email.text != emaildummy) {

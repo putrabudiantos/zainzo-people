@@ -115,8 +115,7 @@ class _LoginPageState extends State<LoginPage> {
         child: button.kElevetedButton(
           "Masuk",
           () {
-            // print(emailcontroller.text); //sebagai debug saat email ditekan
-            // print(passwordcontroller.text); //sebagai debug saat password ditekan
+            //
             logika.logicmasuk(
                 contexts: context,
                 email: emailcontroller,
