@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-// import 'package:get/get_navigation/src/root/get_material_app.dart';
-// import 'package:zainozoho/src/splash/splash.dart'; //import kelas splash
-import 'package:zainozoho/src/theme/color.dart'; //import kelas color
-import 'package:zainozoho/src/login/login.dart';
+import '../src/theme/color.dart'; //import kelas color
+import '../src/login/login.dart'; //import kelas loginpage
 
 void main() async {
   runApp(const MyApp());

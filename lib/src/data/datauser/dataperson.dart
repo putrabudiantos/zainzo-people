@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 //inisialisasi kelas untuk data sementara dengan mapping list
 class DataUser {
@@ -34,8 +35,13 @@ class DataUser {
   String? namapemilikrekening;
   String? statusptkp;
   String? imageurl;
+  String? alasan;
 
-  DataUser({this.namapanggilan, this.posisipekerjaan, this.imageurl});
+  DataUser(
+      {this.namapanggilan,
+      this.posisipekerjaan,
+      this.imageurl,
+      this.namaperusahaan});
 
   Map data() {
     return {
@@ -62,4 +68,116 @@ class DataUser {
       'kelas': kelas
     };
   }
+
+  void setalasan(String alasan) {
+    this.alasan = alasan;
+  }
+
+  String getalasan() {
+    return alasan!;
+  }
+
+  String? checkindate =
+      "$DateFormat.jm().format(DateTime.now()), $DateFormat.yMMMMd().format(DateTime.now())";
+
+  List<Map<String, String>> logabsen = [
+    // {
+    //   'nama': 'Arum',
+    //   'checkin':
+    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
+    //   'checkout':
+    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
+    // },
+    // {
+    //   'nama': 'Arum',
+    //   'checkin':
+    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
+    //   'checkout':
+    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
+    // },
+    // {
+    //   'nama': 'Arum',
+    //   'checkin':
+    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
+    //   'checkout':
+    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
+    // },
+    // {
+    //   'nama': 'Arum',
+    //   'checkin':
+    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
+    //   'checkout':
+    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
+    // },
+    // {
+    //   'nama': 'Arum',
+    //   'checkin':
+    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
+    //   'checkout':
+    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
+    // },
+    // {
+    //   'nama': 'Arum',
+    //   'checkin':
+    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
+    //   'checkout':
+    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
+    // },
+    // {
+    //   'nama': 'Arum',
+    //   'checkin':
+    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
+    //   'checkout':
+    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
+    // },
+    // {
+    //   'nama': 'Arum',
+    //   'checkin':
+    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
+    //   'checkout':
+    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
+    // },
+    // {
+    //   'nama': 'Arum',
+    //   'checkin':
+    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
+    //   'checkout':
+    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
+    // },
+    // {
+    //   'nama': 'Arum',
+    //   'checkin':
+    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
+    //   'checkout':
+    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
+    // },
+    // {
+    //   'nama': 'Arum',
+    //   'checkin':
+    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
+    //   'checkout':
+    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
+    // },
+    // {
+    //   'nama': 'Arum',
+    //   'checkin':
+    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
+    //   'checkout':
+    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
+    // },
+    // {
+    //   'nama': 'Arum',
+    //   'checkin':
+    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
+    //   'checkout':
+    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
+    // },
+    // {
+    //   'nama': 'Arum',
+    //   'checkin':
+    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
+    //   'checkout':
+    //       "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
+    // },
+  ];
 }

@@ -19,6 +19,7 @@ class KTextField {
       autofillHints: const [AutofillHints.email],
       controller: controller, //controller email
       decoration: InputDecoration(
+        label: const Text("Email"),
         hintText: "Email",
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
       ),

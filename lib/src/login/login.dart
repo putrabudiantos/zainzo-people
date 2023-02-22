@@ -69,7 +69,8 @@ class _LoginPageState extends State<LoginPage> {
           TextFormField(
             autofillHints: const [AutofillHints.password],
             obscureText: tampilsandi,
-            textInputAction: TextInputAction.send,
+            obscuringCharacter: '*',
+            textInputAction: TextInputAction.go,
             validator: (e) {
               if (e!.isEmpty) {
                 return "Harap Masukkan Password";
@@ -78,6 +79,7 @@ class _LoginPageState extends State<LoginPage> {
             },
             controller: passwordcontroller, //controller password
             decoration: InputDecoration(
+              label: const Text('Password'),
               hintText: "Password",
               suffixIcon: IconButton(
                 onPressed: () {
@@ -110,6 +112,9 @@ class _LoginPageState extends State<LoginPage> {
           //Button Masuk
         ],
       ),
+
+      //Tombol untuk masuk, untuk deklarasi email dan password sementara,
+      //ada di parameter fungsi dibawah ini
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(15),
         child: button.kElevetedButton(
@@ -124,7 +129,7 @@ class _LoginPageState extends State<LoginPage> {
                 passworddummy: "1");
           },
         ),
-      ), //Button Masuk
+      ),
     );
   }
 }

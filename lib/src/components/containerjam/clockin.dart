@@ -6,11 +6,12 @@ import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:image_picker/image_picker.dart';
-
+import '../button.dart';
 // import 'package:peduly/main.dart';
 
 class ClockIn extends StatefulWidget {
   const ClockIn({super.key});
+
   @override
   _ClockInState createState() => _ClockInState();
 }
@@ -145,104 +146,136 @@ class _ClockInState extends State<ClockIn> {
 
   @override
   Widget build(BuildContext context) {
+    final button = KButton(); //inisialisasi objek untuk kelas button
     double lebar = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        title: const Center(child: Text('Clock In')),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              color: Colors.transparent,
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 0.2,
-              child: _position != null
-                  ? GoogleMap(
-                      initialCameraPosition: CameraPosition(
-                        target: LatLng(lat, long),
-                        zoom: 15,
-                      ),
-                      markers: _marker,
-                    )
-                  : null,
-            ),
-            Container(
-                width: lebar,
-                padding: const EdgeInsets.all(20),
-                child: Column(
-                  children: [
-                    Container(
-                      color: Colors.transparent,
-                      width: lebar,
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          labelText: "Catatan",
-                        ),
-                        controller: _controllerCatatan,
-                      ),
-                    ),
-                    Text("Jarak = $jarak meter"),
-                    image != null
-                        ? Container(
-                            width: lebar,
-                            padding: const EdgeInsets.all(20),
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey),
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            child: Row(
-                              children: [
-                                Container(
-                                  color: Colors.transparent,
-                                  width: 100,
-                                  child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(20),
-                                      child: Image.file(image!)),
-                                ),
-                              ],
-                            ),
-                          )
-                        : Container(),
-                  ],
-                )),
-          ],
+        leading: IconButton(
+            onPressed: () => Navigator.pop(context),
+            icon: const Icon(Icons.arrow_back_ios_new)),
+        centerTitle: true,
+        title: const Text(
+          'Absensi',
+          style: TextStyle(fontFamily: 'Inter'),
         ),
+        actions: [
+          IconButton(
+              tooltip: 'Ambil Gambar',
+              onPressed: () => _getFromCamera(),
+              icon: const Icon(Icons.camera_alt_outlined))
+        ],
       ),
-      bottomSheet: Container(
-        padding: const EdgeInsets.all(20),
-        color: Colors.white60,
-        width: lebar,
-        height: 100,
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.blue,
-              foregroundColor: Colors.black,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
-              )),
-          onPressed: () {
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SizedBox(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height * 0.2,
+            child: _position != null
+                ? GoogleMap(
+                    initialCameraPosition: CameraPosition(
+                      target: LatLng(lat, long),
+                      zoom: 15,
+                    ),
+                    markers: _marker,
+                  )
+                : null,
+          ),
+          Container(
+            width: lebar,
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              children: [
+                Container(
+                  color: Colors.transparent,
+                  width: lebar,
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      labelText: "Catatan",
+                    ),
+                    controller: _controllerCatatan,
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Text("Jarak anda dengan kantor $jarak meter"),
+                const SizedBox(height: 10),
+                image != null
+                    ? Container(
+                        width: lebar,
+                        padding: const EdgeInsets.all(20),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Row(
+                          children: [
+                            Container(
+                              color: Colors.transparent,
+                              width: 100,
+                              child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: Image.file(image!)),
+                            ),
+                          ],
+                        ),
+                      )
+                    : Container(),
+              ],
+            ),
+          ),
+        ],
+      ),
+
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(15),
+        child: button.kElevetedButton(
+          "Clock In",
+          () {
             cekJarak();
             setState(() {
               catatan = _controllerCatatan.text;
             });
           },
-          child: const Text("Clock In"),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        //todo 6 use function
-        onPressed: () {
-          _getFromCamera();
-        },
-        tooltip: 'Increment',
-        child: const Icon(Icons.location_on),
-      ),
+
+      // bottomSheet: Container(
+      //   padding: const EdgeInsets.all(20),
+      //   color: Colors.white60,
+      //   width: lebar,
+      //   height: 100,
+      //   child: ElevatedButton(
+      //     style: ElevatedButton.styleFrom(
+      //         backgroundColor: KColorTheme.warnaUtama,
+      //         foregroundColor: Colors.black,
+      //         shape: RoundedRectangleBorder(
+      //           borderRadius: BorderRadius.circular(15),
+      //         )),
+      //     onPressed: () {
+      //       cekJarak();
+      //       setState(() {
+      //         catatan = _controllerCatatan.text;
+      //       });
+      //     },
+      //     child: const Text(
+      //       "Clock In",
+      //       style: TextStyle(
+      //           color: Colors.white, fontSize: 17, fontFamily: 'Inter'),
+      //     ),
+      //   ),
+      // ),
+      // floatingActionButton: FloatingActionButton(
+      //   //todo 6 use function
+      //   onPressed: () {
+      //     _getFromCamera();
+      //   },
+      //   tooltip: 'Get Lokasi',
+      //   child: const Icon(Icons.location_on_outlined),
+      // ),
     );
   }
 }

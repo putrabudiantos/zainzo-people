@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../data/datauser/dataperson.dart';
 import '../components/textstyle/title.dart';
 import '../components/containerjam/containerjam.dart';
+import '../components/log/logabsensi.dart';
+import '../components/log/logkosong.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -19,6 +21,9 @@ class _HomeState extends State<Home> {
           'https://media.licdn.com/dms/image/D4D03AQFm99I7ryL32g/profile-displayphoto-shrink_800_800/0/1675770329460?e=2147483647&v=beta&t=UNyN1z4W5ardwjKP0SRZlpEUM27aYst7ANbkWqkYQGM');
 
   final styledata = KTextStyle();
+
+  //inisialisasi bool jika tidak ada data log absensi
+  bool logada = false;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +56,26 @@ class _HomeState extends State<Home> {
               backgroundImage: data.data()['urlimage'],
             ),
           ),
-          const KWidget()
+
+          //Widget jam dan button checkin dan checkout
+          const KWidget(),
+
+          const SizedBox(height: 20),
+
+          //widget text log absen
+          Text(
+            'Log Absensi',
+            style: styledata.midstyletext,
+          ),
+
+          const SizedBox(height: 10),
+
+          //widget untuk log absensi
+          SizedBox(
+            child: data.logabsen.isEmpty
+                ? LogKosong(styledata: styledata)
+                : LogAbsensi(),
+          ),
         ],
       ),
     );
