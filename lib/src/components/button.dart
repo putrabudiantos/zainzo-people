@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:zainozoho/src/components/textstyle/title.dart';
 import 'package:zainozoho/src/theme/color.dart'; //import kelas color
 // import 'package:rounded_loading_button/rounded_loading_button.dart';
 
 class KButton {
+  final styletext = KTextStyle();
   final ButtonStyle style =
       ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
   //TextButton
@@ -14,6 +16,22 @@ class KButton {
         style: TextStyle(color: KColorTheme.warnaDasar),
       ),
     );
+  }
+
+  OutlinedButton KOutlineButton(
+      {required Function() func, required String? titles}) {
+    return OutlinedButton(
+        onPressed: func,
+        style: OutlinedButton.styleFrom(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          padding: const EdgeInsets.all(15),
+          side: BorderSide(color: KColorTheme.warnaUtama),
+        ),
+        child: Text(
+          "$titles",
+          style: TextStyle(color: KColorTheme.warnaUtama),
+        ));
   }
 
   //ElevetedButton

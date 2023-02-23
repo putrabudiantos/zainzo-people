@@ -9,9 +9,10 @@ class LupaSandi extends StatefulWidget {
 }
 
 class _LupaSandiState extends State<LupaSandi> {
+  final appbar = KAppBar();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: KAppBar.appbar(context: context, titles: 'Lupa Password'));
+        appBar: appbar.appbar(context: context, titles: 'Lupa Password'));
   }
 }

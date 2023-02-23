@@ -3,6 +3,7 @@ import '../data/datauser/dataperson.dart';
 import '../components/textstyle/title.dart';
 import 'package:zainozoho/src/profil/profileakun/profileakun.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:zainozoho/src/profil/personal/personal.dart';
 
 class Akun extends StatefulWidget {
   const Akun({super.key});
@@ -44,7 +45,14 @@ class _AkunState extends State<Akun> {
 
             //Personal
             ListTile(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const PersonalEdit(),
+                  ),
+                );
+              },
               minLeadingWidth: 12,
               leading: SvgPicture.asset('assets/icons/icon_personal.svg'),
               title: Text('Personal', style: styledata.smaller),

@@ -26,6 +26,19 @@ class KTextField {
     );
   }
 
+  TextFormField personaldata(
+      {required TextEditingController controllers, required String? label}) {
+    return TextFormField(
+      readOnly: true,
+      enabled: false,
+      decoration: InputDecoration(
+        label: Text('$label'),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
+      ),
+      controller: controllers,
+    );
+  }
+
   //User input intuk password
   // TextFormField kUserPasswordField(Function() setstate) {
   //   return TextFormField(
