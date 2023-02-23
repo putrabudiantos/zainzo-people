@@ -18,7 +18,7 @@ class KButton {
     );
   }
 
-  OutlinedButton KOutlineButton(
+  OutlinedButton kOutlineButton(
       {required Function() func, required String? titles}) {
     return OutlinedButton(
         onPressed: func,
