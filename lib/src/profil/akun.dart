@@ -4,6 +4,7 @@ import '../components/textstyle/title.dart';
 import 'package:zainozoho/src/profil/profileakun/profileakun.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:zainozoho/src/profil/personal/personal.dart';
+import 'package:zainozoho/src/profil/pekerjaan/pekerjaan.dart';
 
 class Akun extends StatefulWidget {
   const Akun({super.key});
@@ -61,7 +62,14 @@ class _AkunState extends State<Akun> {
 
             //Pekerjaan
             ListTile(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const InfoPekerjaan(),
+                  ),
+                );
+              },
               minLeadingWidth: 12,
               leading: SvgPicture.asset('assets/icons/icon_pekerjaan.svg'),
               title: Text('Pekerjaan', style: styledata.smaller),
