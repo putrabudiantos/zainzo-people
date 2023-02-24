@@ -45,9 +45,10 @@ class KButton {
           padding: const EdgeInsets.all(10) // Background color
           ),
       onPressed: onpressing,
-      child: const Text(
-        'Masuk',
-        style: TextStyle(fontSize: 20, color: Colors.white),
+      child: Text(
+        judul,
+        style: const TextStyle(
+            fontSize: 20, color: Colors.white, fontFamily: "Inter"),
       ),
     );
   }

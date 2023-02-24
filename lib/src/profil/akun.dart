@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:zainozoho/src/profil/ubahkatasandi/ubahkatasandi.dart';
 import '../data/datauser/dataperson.dart';
 import '../components/textstyle/title.dart';
 import 'package:zainozoho/src/profil/profileakun/profileakun.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:zainozoho/src/profil/personal/personal.dart';
 import 'package:zainozoho/src/profil/pekerjaan/pekerjaan.dart';
+import 'package:zainozoho/src/profil/payroll/payroll.dart';
 
 class Akun extends StatefulWidget {
   const Akun({super.key});
@@ -78,7 +80,14 @@ class _AkunState extends State<Akun> {
 
             //Payroll
             ListTile(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Payroll(),
+                  ),
+                );
+              },
               minLeadingWidth: 12,
               leading: SvgPicture.asset('assets/icons/icon_payroll.svg'),
               title: Text('Payroll', style: styledata.smaller),
@@ -101,7 +110,14 @@ class _AkunState extends State<Akun> {
 
             //Ubah Kata Sandi
             ListTile(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const UbahKataSandi(),
+                  ),
+                );
+              },
               minLeadingWidth: 12,
               leading: SvgPicture.asset('assets/icons/icon_ubahSandi.svg'),
               title: Text('Ubah Kata Sandi', style: styledata.smaller),

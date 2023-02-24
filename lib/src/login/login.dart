@@ -34,7 +34,12 @@ class _LoginPageState extends State<LoginPage> {
           //Stack image karna gambar image terlalu besar maka saya tumpuk dia dengan widget yang lain
           Stack(
             alignment: Alignment.center,
-            children: [Image.asset('assets/images/logo.png')],
+            children: [
+              Image.asset(
+                'assets/icons/Vector.png',
+                scale: 2.4,
+              )
+            ],
           ), //Logo Peduly
           const SizedBox(height: 50),
 

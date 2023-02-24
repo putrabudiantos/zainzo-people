@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
-class KTextField {
-  // final emailcontroller = TextEditingController();
-  // final passwordcontroller = TextEditingController();
-  // static bool tampilsandi = true;
+import '../theme/color.dart';
 
+class KTextField {
   //User input untuk username
   TextFormField kUsernameField({required TextEditingController controller}) {
     return TextFormField(
@@ -26,6 +24,7 @@ class KTextField {
     );
   }
 
+  //text input untuk personal data
   TextFormField personaldata(
       {required TextEditingController controllers, required String? label}) {
     return TextFormField(
@@ -39,36 +38,40 @@ class KTextField {
     );
   }
 
-  //User input intuk password
-  // TextFormField kUserPasswordField(Function() setstate) {
-  //   return TextFormField(
-  //     autofillHints: const [AutofillHints.password],
-  //     obscureText: tampilsandi,
-  //     textInputAction: TextInputAction.send,
-  //     validator: (e) {
-  //       if (e!.isEmpty) {
-  //         return "Harap Masukkan Password";
-  //       }
-  //       return null;
-  //     },
-  //     controller: passwordcontroller, //controller password
-  //     decoration: InputDecoration(
-  //       hintText: "Password",
-  //       suffixIcon: IconButton(
-  //         onPressed: () {
-  //           setstate;
-  //         },
-  //         icon: Icon(
-  //           tampilsandi
-  //               ? Icons.visibility_outlined
-  //               : Icons.visibility_off_outlined,
-  //           color: Colors.black45,
-  //         ),
-  //       ),
-  //       border: OutlineInputBorder(
-  //         borderRadius: BorderRadius.circular(15),
-  //       ),
-  //     ),
-  //   );
-  // }
+  //Text Input untuk Password input
+  TextFormField passwordinput(
+      {required bool obecuretext,
+      required TextEditingController controller,
+      required String label,
+      required void Function()? setstate}) {
+    return TextFormField(
+      autofillHints: const [AutofillHints.password],
+      obscureText: obecuretext,
+      obscuringCharacter: '*',
+      textInputAction: TextInputAction.next,
+      validator: (e) {
+        if (e!.isEmpty) {
+          return "Harap Masukkan Password";
+        }
+        return null;
+      },
+      controller: controller, //controller password
+      decoration: InputDecoration(
+        label: Text(label),
+        hintText: label,
+        suffixIcon: IconButton(
+          onPressed: setstate,
+          icon: Icon(
+            obecuretext
+                ? Icons.visibility_outlined
+                : Icons.visibility_off_outlined,
+            color: KColorTheme.warnaUtama,
+          ),
+        ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
+      ),
+    );
+  }
 }
