@@ -1,6 +1,23 @@
 import 'package:flutter/material.dart';
 
 class LogicEliminate {
+  //   bool _isPasswordEightCharacters = false;
+  //   bool _hasPasswordOneNumber = false;
+
+  //   onPasswordChanged(String password, Function() fn) {
+  //   final numericRegex = RegExp(r'[0-9]');
+
+  //   setState(() {
+  //     _isPasswordEightCharacters = false;
+  //     if(password.length >= 8)
+  //       _isPasswordEightCharacters = true;
+
+  //     _hasPasswordOneNumber = false;
+  //     if(numericRegex.hasMatch(password))
+  //       _hasPasswordOneNumber = true;
+  //   });
+  // }
+
   bool validateStructurewithsymbol(String value) {
     String pattern =
         r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';

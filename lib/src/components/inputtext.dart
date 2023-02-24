@@ -39,14 +39,17 @@ class KTextField {
   }
 
   //Text Input untuk Password input
-  TextFormField passwordinput(
-      {required bool obecuretext,
-      required TextEditingController controller,
-      required String label,
-      required void Function()? setstate}) {
+  TextFormField passwordinput({
+    required bool obecuretext,
+    required TextEditingController controller,
+    required String label,
+    required void Function()? setstate,
+    void Function(String text)? onchanged,
+  }) {
     return TextFormField(
       autofillHints: const [AutofillHints.password],
       obscureText: obecuretext,
+      onChanged: onchanged,
       obscuringCharacter: '*',
       textInputAction: TextInputAction.next,
       validator: (e) {
