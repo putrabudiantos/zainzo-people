@@ -121,7 +121,7 @@ class _LoginPageState extends State<LoginPage> {
       //Tombol untuk masuk, untuk deklarasi email dan password sementara,
       //ada di parameter fungsi dibawah ini
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(15),
+        padding: const EdgeInsets.all(18),
         child: button.kElevetedButton(
           "Masuk",
           () {

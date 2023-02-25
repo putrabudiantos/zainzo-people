@@ -38,7 +38,7 @@ class _UbahKataSandiState extends State<UbahKataSandi> {
       hasPasswordOneNumber = false;
       if (numericRegex.hasMatch(password)) hasPasswordOneNumber = true;
     });
-
+    hasLowerUpper = false;
     if (upperLowerRegex.hasMatch(password)) hasLowerUpper = true;
   }
 
@@ -89,92 +89,15 @@ class _UbahKataSandiState extends State<UbahKataSandi> {
           const SizedBox(height: 10),
           //eliminasi
           // logic.eliminate(context: context, text: passwordbaru1.text),
-          Row(
-            children: [
-              AnimatedContainer(
-                duration: const Duration(milliseconds: 500),
-                width: 20,
-                height: 20,
-                decoration: BoxDecoration(
-                    color: isPasswordEightCharacters
-                        ? Colors.green
-                        : Colors.transparent,
-                    border: isPasswordEightCharacters
-                        ? Border.all(color: Colors.transparent)
-                        : Border.all(color: Colors.grey.shade400),
-                    borderRadius: BorderRadius.circular(50)),
-                child: const Center(
-                  child: Icon(
-                    Icons.check,
-                    color: Colors.white,
-                    size: 15,
-                  ),
-                ),
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              const Text("Panjang minimal 8 karakter")
-            ],
-          ),
-          const SizedBox(height: 10),
-
-          Row(
-            children: [
-              AnimatedContainer(
-                duration: const Duration(milliseconds: 500),
-                width: 20,
-                height: 20,
-                decoration: BoxDecoration(
-                    color: hasLowerUpper ? Colors.green : Colors.transparent,
-                    border: hasLowerUpper
-                        ? Border.all(color: Colors.transparent)
-                        : Border.all(color: Colors.grey.shade400),
-                    borderRadius: BorderRadius.circular(50)),
-                child: const Center(
-                  child: Icon(
-                    Icons.check,
-                    color: Colors.white,
-                    size: 15,
-                  ),
-                ),
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              const Text("Huruf kecil dan besar")
-            ],
-          ),
+          Roweliminatenumber(
+              isPasswordEightCharacters: isPasswordEightCharacters),
 
           const SizedBox(height: 10),
-          Row(
-            children: [
-              AnimatedContainer(
-                duration: const Duration(milliseconds: 500),
-                width: 20,
-                height: 20,
-                decoration: BoxDecoration(
-                    color: hasPasswordOneNumber
-                        ? Colors.green
-                        : Colors.transparent,
-                    border: hasPasswordOneNumber
-                        ? Border.all(color: Colors.transparent)
-                        : Border.all(color: Colors.grey.shade400),
-                    borderRadius: BorderRadius.circular(50)),
-                child: const Center(
-                  child: Icon(
-                    Icons.check,
-                    color: Colors.white,
-                    size: 15,
-                  ),
-                ),
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              const Text("Minimal terdapat 1 angka")
-            ],
-          ),
+
+          Roweliminatelowup(hasLowerUpper: hasLowerUpper),
+
+          const SizedBox(height: 10),
+          Roweliminateonenum(hasPasswordOneNumber: hasPasswordOneNumber),
 
           const SizedBox(height: 10),
           //Textfield untuk password baru 2
@@ -192,6 +115,124 @@ class _UbahKataSandiState extends State<UbahKataSandi> {
       bottomNavigationBar: Padding(
           padding: const EdgeInsets.all(10),
           child: button.kElevetedButton("Simpan Perubahan", () {})),
+    );
+  }
+}
+
+class Roweliminateonenum extends StatelessWidget {
+  const Roweliminateonenum({
+    super.key,
+    required this.hasPasswordOneNumber,
+  });
+
+  final bool hasPasswordOneNumber;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        AnimatedContainer(
+          duration: const Duration(milliseconds: 500),
+          width: 20,
+          height: 20,
+          decoration: BoxDecoration(
+              color: hasPasswordOneNumber ? Colors.green : Colors.transparent,
+              border: hasPasswordOneNumber
+                  ? Border.all(color: Colors.transparent)
+                  : Border.all(color: Colors.grey.shade400),
+              borderRadius: BorderRadius.circular(50)),
+          child: const Center(
+            child: Icon(
+              Icons.check,
+              color: Colors.white,
+              size: 15,
+            ),
+          ),
+        ),
+        const SizedBox(
+          width: 10,
+        ),
+        const Text("Minimal terdapat 1 angka")
+      ],
+    );
+  }
+}
+
+class Roweliminatelowup extends StatelessWidget {
+  const Roweliminatelowup({
+    super.key,
+    required this.hasLowerUpper,
+  });
+
+  final bool hasLowerUpper;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        AnimatedContainer(
+          duration: const Duration(milliseconds: 500),
+          width: 20,
+          height: 20,
+          decoration: BoxDecoration(
+              color: hasLowerUpper ? Colors.green : Colors.transparent,
+              border: hasLowerUpper
+                  ? Border.all(color: Colors.transparent)
+                  : Border.all(color: Colors.grey.shade400),
+              borderRadius: BorderRadius.circular(50)),
+          child: const Center(
+            child: Icon(
+              Icons.check,
+              color: Colors.white,
+              size: 15,
+            ),
+          ),
+        ),
+        const SizedBox(
+          width: 10,
+        ),
+        const Text("Huruf kecil dan besar")
+      ],
+    );
+  }
+}
+
+class Roweliminatenumber extends StatelessWidget {
+  const Roweliminatenumber({
+    super.key,
+    required this.isPasswordEightCharacters,
+  });
+
+  final bool isPasswordEightCharacters;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        AnimatedContainer(
+          duration: const Duration(milliseconds: 500),
+          width: 20,
+          height: 20,
+          decoration: BoxDecoration(
+              color:
+                  isPasswordEightCharacters ? Colors.green : Colors.transparent,
+              border: isPasswordEightCharacters
+                  ? Border.all(color: Colors.transparent)
+                  : Border.all(color: Colors.grey.shade400),
+              borderRadius: BorderRadius.circular(50)),
+          child: const Center(
+            child: Icon(
+              Icons.check,
+              color: Colors.white,
+              size: 15,
+            ),
+          ),
+        ),
+        const SizedBox(
+          width: 10,
+        ),
+        const Text("Panjang minimal 8 karakter")
+      ],
     );
   }
 }

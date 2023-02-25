@@ -42,13 +42,16 @@ class KButton {
             borderRadius: BorderRadius.circular(15), // <-- Radius
           ),
           backgroundColor: KColorTheme.warnaUtama.shade600,
-          padding: const EdgeInsets.all(10) // Background color
+          padding: const EdgeInsets.all(18) // Background color
           ),
       onPressed: onpressing,
       child: Text(
         judul,
         style: const TextStyle(
-            fontSize: 20, color: Colors.white, fontFamily: "Inter"),
+            fontSize: 17,
+            color: Colors.white,
+            fontFamily: "Inter",
+            fontWeight: FontWeight.bold),
       ),
     );
   }

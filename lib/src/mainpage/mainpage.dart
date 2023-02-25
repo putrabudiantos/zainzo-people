@@ -29,9 +29,11 @@ class _NavMainPageState extends State<NavMainPage> {
 
     //fungsi window jadwal
     Text(
-      'Index 1: Business',
+      'Contacts',
       style: optionStyle,
     ),
+
+    Text("Notifications"),
 
     //fungsiw window akun
     Akun(),
@@ -53,27 +55,36 @@ class _NavMainPageState extends State<NavMainPage> {
       ),
 
       // inisialisasi Navigatorbar
-      bottomNavigationBar: BottomNavigationBar(
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset('assets/icons/icon_home_nonaktif.svg'),
-            activeIcon: SvgPicture.asset('assets/icons/icon_home_aktif.svg'),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset('assets/icons/icon_jadwal_nonaktif.svg'),
-            activeIcon: SvgPicture.asset('assets/icons/icon_jadwal_aktif.svg'),
-            label: 'Jadwal',
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset('assets/icons/icon_akun_nonaktif.svg'),
-            activeIcon: SvgPicture.asset('assets/icons/icon_akun_aktif.svg'),
-            label: 'Akun',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: KColorTheme.warnaUtama,
-        onTap: _onItemTapped,
+      bottomNavigationBar: SizedBox(
+        height: 65,
+        child: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          items: <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: SvgPicture.asset('assets/icons/icon_home_nonaktif.svg'),
+              activeIcon: SvgPicture.asset('assets/icons/icon_home_aktif.svg'),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: SvgPicture.asset('assets/icons/contact.svg'),
+              activeIcon: SvgPicture.asset('assets/icons/karyawan-active.svg'),
+              label: 'Karyawan',
+            ),
+            BottomNavigationBarItem(
+              icon: SvgPicture.asset('assets/icons/notifications.svg'),
+              activeIcon: SvgPicture.asset('assets/icons/notifications.svg'),
+              label: 'Notifikasi',
+            ),
+            BottomNavigationBarItem(
+              icon: SvgPicture.asset('assets/icons/icon_akun_nonaktif.svg'),
+              activeIcon: SvgPicture.asset('assets/icons/icon_akun_aktif.svg'),
+              label: 'Akun',
+            ),
+          ],
+          currentIndex: _selectedIndex,
+          selectedItemColor: KColorTheme.warnaUtama,
+          onTap: _onItemTapped,
+        ),
       ),
     );
   }

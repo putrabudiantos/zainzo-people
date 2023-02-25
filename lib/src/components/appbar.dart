@@ -15,12 +15,16 @@ class KAppBar {
         icon: const Icon(
           Icons.arrow_back_ios_new,
           color: Colors.black,
+          size: 19,
         ),
       ),
       title: Text(
         titles!,
         style: const TextStyle(
-            color: Colors.black, fontFamily: 'Inter', fontSize: 17),
+            color: Colors.black,
+            fontFamily: 'Inter',
+            fontSize: 17,
+            fontWeight: FontWeight.bold),
       ),
       actions: actions,
       backgroundColor: Colors.white,
