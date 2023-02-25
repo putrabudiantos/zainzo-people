@@ -72,7 +72,8 @@ class _NavMainPageState extends State<NavMainPage> {
             ),
             BottomNavigationBarItem(
               icon: SvgPicture.asset('assets/icons/notifications.svg'),
-              activeIcon: SvgPicture.asset('assets/icons/notifications.svg'),
+              activeIcon:
+                  SvgPicture.asset('assets/icons/notifications-active.svg'),
               label: 'Notifikasi',
             ),
             BottomNavigationBarItem(
