@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:zainozoho/src/components/textstyle/title.dart';
 import 'package:zainozoho/src/theme/color.dart'; //import kelas color
-// import 'package:rounded_loading_button/rounded_loading_button.dart';
 
 class KButton {
   final styletext = KTextStyle();
