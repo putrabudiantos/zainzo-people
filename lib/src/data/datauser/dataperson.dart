@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -37,12 +38,53 @@ class DataUser {
   String? imageurl;
   String? alasan;
 
+  String? hari;
+  String? bulan;
+  String? menit;
+  String? jam;
+  String? waktu;
+
+  bool titikKoma = true;
+  DateTime date = DateTime.now();
+  Timer? timer;
+
+  // fungsi konversi hari
+  convertHari() {
+    if (date.weekday == 1) hari = "Sen";
+    if (date.weekday == 2) hari = "Sel";
+    if (date.weekday == 3) hari = "Rab";
+    if (date.weekday == 4) hari = "Kam";
+    if (date.weekday == 5) hari = "Jum";
+    if (date.weekday == 6) hari = "Sab";
+    if (date.weekday == 7) hari = "Min";
+    return hari;
+  }
+
+  // fungsi konversi bulan
+  convertBulan() {
+    if (date.month == 1) bulan = "Jan";
+    if (date.month == 2) bulan = "Feb";
+    if (date.month == 3) bulan = "Mar";
+    if (date.month == 4) bulan = "Apr";
+    if (date.month == 5) bulan = "Mei";
+    if (date.month == 6) bulan = "Jun";
+    if (date.month == 7) bulan = "Jul";
+    if (date.month == 3) bulan = "Agu";
+    if (date.month == 4) bulan = "Sep";
+    if (date.month == 5) bulan = "Okt";
+    if (date.month == 6) bulan = "Nov";
+    if (date.month == 7) bulan = "Des";
+    return bulan;
+  }
+
+  //konstruktor named untuk mengambil datauser
   DataUser(
       {this.namapanggilan,
       this.posisipekerjaan,
       this.imageurl,
       this.namaperusahaan});
 
+  //mapping data user
   Map data() {
     return {
       'id': employeid,
@@ -80,104 +122,56 @@ class DataUser {
   String? checkindate =
       "$DateFormat.jm().format(DateTime.now()), $DateFormat.yMMMMd().format(DateTime.now())";
 
+  //list untuk mendeklarasikan data log absen sementara
+  //untuk lanjutan bisa diambil melalui database
   List<Map<String, String>> logabsen = [
     {
-      'nama': 'Arum',
-      'checkin':
-          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
-      'checkout':
-          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
+      "hari": DateFormat('EEEE').format(DateTime.now()),
+      "tanggal": DateTime.now().day.toString(),
+      "clockin": DateFormat.Hm().format(DateTime.now()),
+      "clockout": DateFormat.Hm().format(DateTime.now())
     },
     {
-      'nama': 'Arum',
-      'checkin':
-          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
-      'checkout':
-          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
+      "hari": DateFormat('EEEE').format(DateTime.now()),
+      "tanggal": DateTime.now().day.toString(),
+      "clockin": DateFormat.Hm().format(DateTime.now()),
+      "clockout": DateFormat.Hm().format(DateTime.now())
     },
     {
-      'nama': 'Arum',
-      'checkin':
-          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
-      'checkout':
-          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
+      "hari": DateFormat('EEEE').format(DateTime.now()),
+      "tanggal": DateTime.now().day.toString(),
+      "clockin": DateFormat.Hm().format(DateTime.now()),
+      "clockout": DateFormat.Hm().format(DateTime.now())
     },
     {
-      'nama': 'Arum',
-      'checkin':
-          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
-      'checkout':
-          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
+      "hari": DateFormat('EEEE').format(DateTime.now()),
+      "tanggal": DateTime.now().day.toString(),
+      "clockin": DateFormat.Hm().format(DateTime.now()),
+      "clockout": DateFormat.Hm().format(DateTime.now())
     },
     {
-      'nama': 'Arum',
-      'checkin':
-          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
-      'checkout':
-          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
+      "hari": DateFormat('EEEE').format(DateTime.now()),
+      "tanggal": DateTime.now().day.toString(),
+      "clockin": DateFormat.Hm().format(DateTime.now()),
+      "clockout": DateFormat.Hm().format(DateTime.now())
     },
     {
-      'nama': 'Arum',
-      'checkin':
-          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
-      'checkout':
-          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
+      "hari": DateFormat('EEEE').format(DateTime.now()),
+      "tanggal": DateTime.now().day.toString(),
+      "clockin": DateFormat.Hm().format(DateTime.now()),
+      "clockout": DateFormat.Hm().format(DateTime.now())
     },
     {
-      'nama': 'Arum',
-      'checkin':
-          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
-      'checkout':
-          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
+      "hari": DateFormat('EEEE').format(DateTime.now()),
+      "tanggal": DateTime.now().day.toString(),
+      "clockin": DateFormat.Hm().format(DateTime.now()),
+      "clockout": DateFormat.Hm().format(DateTime.now())
     },
     {
-      'nama': 'Arum',
-      'checkin':
-          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
-      'checkout':
-          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
-    },
-    {
-      'nama': 'Arum',
-      'checkin':
-          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
-      'checkout':
-          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
-    },
-    {
-      'nama': 'Arum',
-      'checkin':
-          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
-      'checkout':
-          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
-    },
-    {
-      'nama': 'Arum',
-      'checkin':
-          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
-      'checkout':
-          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
-    },
-    {
-      'nama': 'Arum',
-      'checkin':
-          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
-      'checkout':
-          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
-    },
-    {
-      'nama': 'Arum',
-      'checkin':
-          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
-      'checkout':
-          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
-    },
-    {
-      'nama': 'Arum',
-      'checkin':
-          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}",
-      'checkout':
-          "${DateFormat.jm().format(DateTime.now())}, ${DateFormat.yMMMMd().format(DateTime.now())}"
-    },
+      "hari": DateFormat('EEEE').format(DateTime.now()),
+      "tanggal": DateTime.now().day.toString(),
+      "clockin": DateFormat.Hm().format(DateTime.now()),
+      "clockout": DateFormat.Hm().format(DateTime.now())
+    }
   ];
 }

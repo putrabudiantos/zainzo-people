@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../mainpage/mainpage.dart'; //import dari kelas mainpage
 
 //kelas untuk membuat logika login
@@ -10,16 +11,16 @@ class LogicMasuk {
       required TextEditingController email,
       required TextEditingController password,
       required String? emaildummy,
-      required String? passworddummy}) {
+      required String? passworddummy,
+      required SharedPreferences logindata,
+      required bool newuser}) {
     // jika email dan password benar dengan email dummy dan password dummy, maka
     // akan masuk ke window main yang ada di kelas mainpages
     if (email.text == emaildummy && password.text == passworddummy) {
-      Navigator.pushReplacement(
-        contexts!,
-        MaterialPageRoute(
-          builder: (contexts) => const NavMainPage(),
-        ),
-      );
+      logindata.setBool('login', false);
+      logindata.setString('username', email.text);
+      Navigator.pushReplacement(contexts!,
+          MaterialPageRoute(builder: (contexts) => const NavMainPage()));
     } else if (email.text != emaildummy) {
       showCupertinoModalPopup(
         context: contexts!,

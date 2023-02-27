@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:zainozoho/src/profil/ubahkatasandi/ubahkatasandi.dart';
 import '../data/datauser/dataperson.dart';
@@ -8,6 +9,8 @@ import 'package:zainozoho/src/profil/personal/personal.dart';
 import 'package:zainozoho/src/profil/pekerjaan/pekerjaan.dart';
 import 'package:zainozoho/src/profil/payroll/payroll.dart';
 import 'package:zainozoho/src/profil/pengingat/pengingatcico.dart';
+import 'package:zainozoho/src/login/login.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Akun extends StatefulWidget {
   const Akun({super.key});
@@ -26,7 +29,23 @@ class _AkunState extends State<Akun> {
           'https://media.licdn.com/dms/image/D4D03AQFm99I7ryL32g/profile-displayphoto-shrink_800_800/0/1675770329460?e=2147483647&v=beta&t=UNyN1z4W5ardwjKP0SRZlpEUM27aYst7ANbkWqkYQGM');
 
   //inisialisasi objek untuk style teks
+  final shareddata = const LoginPage();
   final styledata = KTextStyle();
+  SharedPreferences? logindata;
+  String? username;
+
+  @override
+  void initState() {
+    super.initState();
+    initial();
+  }
+
+  void initial() async {
+    logindata = await SharedPreferences.getInstance();
+    setState(() {
+      username = logindata!.getString('username')!;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -188,7 +207,46 @@ class _AkunState extends State<Akun> {
 
             //Keluar
             ListTile(
-              onTap: () {},
+              onTap: () {
+                showCupertinoModalPopup(
+                  context: context,
+                  builder: (BuildContext context) => CupertinoAlertDialog(
+                    title: const Text('Yakin ingin keluar?'),
+                    content: const Text('Anda perlu login ulang untuk kembali',
+                        style: TextStyle(fontSize: 15)),
+                    actions: [
+                      CupertinoDialogAction(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        isDestructiveAction: true,
+                        child: const Text(
+                          'Batal',
+                          style: TextStyle(
+                            color: Colors.blue,
+                          ),
+                        ),
+                      ),
+                      CupertinoDialogAction(
+                        onPressed: () {
+                          logindata!.setBool('login', true);
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const LoginPage()));
+                        },
+                        isDestructiveAction: true,
+                        child: const Text(
+                          'Keluar',
+                          style: TextStyle(
+                            color: Colors.blue,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                );
+              },
               minLeadingWidth: 12,
               leading: SvgPicture.asset('assets/icons/icon_keluar.svg'),
               title: Text('Keluar', style: styledata.smaller),

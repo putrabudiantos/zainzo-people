@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:zainozoho/src/components/appbar.dart';
-import 'package:zainozoho/src/data/dataperusahaan/databasekaryawan.dart';
+import 'package:zainozoho/src/components/listtile/listtilekaryawan.dart';
+
+import '../models/mysqlconnection.dart';
 
 class Karyawan extends StatefulWidget {
   const Karyawan({super.key});
@@ -14,6 +16,24 @@ class _KaryawanState extends State<Karyawan> {
   int jumlahkaryawan = 0;
   final searchcontroller = TextEditingController();
   final appbar = KAppBar();
+  final listtile = const KListTileKaryawan();
+  var db = MySql();
+  var nama = "";
+
+  void getMahasiswa() {
+    db.getConnection().then((conn) {
+      String sql = "select nama from mahasiswa where kelas = '3b1';";
+      conn.query(sql).then((result) {
+        setState(() {
+          for (var row in result) {
+            setState(() {
+              nama = row[0];
+            });
+          }
+        });
+      });
+    });
+  }
 
   void updateList(String value) {}
   @override

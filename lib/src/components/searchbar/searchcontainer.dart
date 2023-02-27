@@ -20,7 +20,7 @@ class SearchBar {
     DatabaseKaryawan(nama: "Buston"),
   ];
 
-  List<DatabaseKaryawan> display_list = List.from(datanama);
+  // List<DatabaseKaryawan> display_list = List.from(datanama);
   void updateList(String value, Function(Function) setstate) {
     setstate;
     /* 

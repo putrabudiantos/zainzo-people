@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../src/theme/color.dart'; //import kelas color
-import '../src/login/login.dart'; //import kelas loginpage`
+import 'package:zainozoho/src/splash/splash.dart';
 
 void main() async {
   runApp(const MyApp());
@@ -23,7 +23,7 @@ class _MyAppState extends State<MyApp> {
           canvasColor: Colors.transparent,
           primarySwatch:
               KColorTheme.warnaUtama), //warna diambil dari dari class color
-      home: const LoginPage(), //jendela awal buka aplikasi
+      home: const SplashScreen(), //jendela awal buka aplikasi
     );
   }
 }

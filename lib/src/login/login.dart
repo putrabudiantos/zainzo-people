@@ -1,4 +1,11 @@
+import 'dart:async';
+
+import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:zainozoho/src/mainpage/mainpage.dart';
 import '../components/inputtext.dart'; //import kelas textfield
 import '../components/button.dart'; //import kelas button
 import '../login/lupasandi/lupasandi.dart'; //import kelas lupa sandi
@@ -20,7 +27,110 @@ class _LoginPageState extends State<LoginPage> {
   final passwordcontroller =
       TextEditingController(); //inisialisasi password controller
   static bool tampilsandi = true; //boolean untuk tampil kata sandi
+
   final logika = LogicMasuk(); //inisialisasi objek untuk kelas logicmasuk
+
+  late SharedPreferences logindata;
+  late bool newuser;
+
+  late StreamSubscription
+      subscription; //inisialisasi untuk koneksi internet hilang
+  var isDeviceConnected = false;
+  bool isAlert = false;
+
+  @override
+  void initState() {
+    super.initState();
+    checkifalreadylogin();
+    getConnectivity();
+  }
+
+  void checkifalreadylogin() async {
+    logindata = await SharedPreferences.getInstance();
+    newuser = (logindata.getBool('login') ?? true);
+    if (newuser == false) {
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (context) => const NavMainPage()));
+    }
+  }
+
+  getConnectivity() {
+    subscription = Connectivity().onConnectivityChanged.listen(
+      (ConnectivityResult result) async {
+        isDeviceConnected = await InternetConnectionChecker().hasConnection;
+        if (!isDeviceConnected && isAlert == false) {
+          // alert.dialogError(context: context);
+          dialogError();
+          setState(
+            () {
+              isAlert = true;
+            },
+          );
+        }
+      },
+    );
+  }
+
+  @override
+  void dispose() {
+    subscription.cancel();
+    emailcontroller.dispose();
+    passwordcontroller.dispose();
+    super.dispose();
+  }
+
+  dialogError() {
+    showCupertinoModalPopup(
+      context: context,
+      builder: (BuildContext context) => CupertinoAlertDialog(
+        title: const Text('Koneksi Gagal'),
+        content: const Text(
+            'Gagal terhubung ke internet, mohon periksa kembali koneksi anda!'),
+        actions: [
+          CupertinoDialogAction(
+            child: const Text(
+              'OK',
+              style: TextStyle(color: Colors.blue),
+            ),
+            onPressed: () async {
+              Navigator.pop(context);
+              setState(
+                () async {
+                  isAlert = false;
+                  isDeviceConnected =
+                      await InternetConnectionChecker().hasConnection;
+                  if (!isDeviceConnected) {
+                    dialogError();
+                    setState(() {
+                      isAlert = true;
+                    });
+                  }
+                },
+              );
+            },
+          )
+        ],
+      ),
+    );
+  }
+
+  // var db = MySql();
+  // var nama = "";
+
+  // void getMahasiswa() {
+  //   db.getConnection().then((conn) {
+  //     String sql = "select nama from mahasiswa where kelas = '3b1';";
+  //     conn.query(sql).then((result) {
+  //       setState(() {
+  //         for (var row in result) {
+  //           setState(() {
+  //             nama = row[0];
+  //           });
+  //         }
+  //       });
+  //     });
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -125,13 +235,20 @@ class _LoginPageState extends State<LoginPage> {
         child: button.kElevetedButton(
           "Masuk",
           () {
-            //
             logika.logicmasuk(
+                logindata: logindata,
+                newuser: newuser,
                 contexts: context,
                 email: emailcontroller,
                 password: passwordcontroller,
                 emaildummy: "soho@email.com",
                 passworddummy: "1");
+            // if (emaildata.isNotEmpty && passworddata.isNotEmpty) {
+            //   logindata.setBool('login', false);
+            //   logindata.setString('username', emaildata);
+            //   Navigator.pushReplacement(context,
+            //       MaterialPageRoute(builder: (context) => const NavMainPage()));
+            // }
           },
         ),
       ),
