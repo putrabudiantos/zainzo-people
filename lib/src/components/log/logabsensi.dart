@@ -11,6 +11,7 @@ class LogAbsensi extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String clockout = "";
     //Container pada saat jika ada log absen maka kontainer ini akan muncul
     //dan menampilkn widget template yang telah saya buat di bawah
     return Column(
@@ -253,9 +254,9 @@ class LogAbsensi extends StatelessWidget {
       {String? hari,
       String? tanggal,
       String? clockin,
-      String? clockout,
+      clockout,
       BuildContext? context}) {
-    if (clockout!.isNotEmpty) {
+    if (clockout.isNotEmpty) {
       boolclockout == false;
     } else {
       boolclockout = true;
@@ -289,12 +290,14 @@ class LogAbsensi extends StatelessWidget {
                 ),
                 //Column untuk jam clockin dan clock out
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     //untuk tanggal
                     Text(
                       clockin!,
                       style: const TextStyle(fontFamily: "Inter", fontSize: 16),
                     ),
+                    const SizedBox(height: 15),
                     boolclockout == true
                         ? Text(
                             clockout,
@@ -306,24 +309,33 @@ class LogAbsensi extends StatelessWidget {
                 ),
                 //column untuk text clock in/out
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     //untuk tanggal
                     const Text(
                       "Clock In",
                       style: TextStyle(fontFamily: "Inter", fontSize: 16),
                     ),
+                    const SizedBox(height: 15),
                     boolclockout == true
                         ? const Text(
                             "ClockOut",
                             style: TextStyle(fontFamily: "Inter", fontSize: 16),
                           )
-                        : const Text('')
+                        : const Text(''),
                   ],
                 ),
-
-                const Icon(
-                  Icons.arrow_forward_ios_sharp,
-                  size: 17,
+                Column(
+                  children: [
+                    const Icon(
+                      Icons.arrow_forward_ios_sharp,
+                      size: 17,
+                    ),
+                    const SizedBox(height: 15),
+                    boolclockout == true
+                        ? const Icon(Icons.arrow_forward_ios, size: 17)
+                        : const Text('')
+                  ],
                 )
               ],
             ),

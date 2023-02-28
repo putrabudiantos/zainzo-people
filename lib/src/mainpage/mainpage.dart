@@ -8,6 +8,7 @@ import '../theme/color.dart'; //import kelas color
 import 'package:flutter_svg/flutter_svg.dart'; //import kelas svg untuk icon navigasi bar
 import 'package:zainozoho/src/profil/akun.dart'; //import kelas tab akun
 import 'package:zainozoho/src/karyawan/karyawan.dart'; //import kelas untuk tab karyawan
+import 'package:zainozoho/src/notifikasi/tabnotifikasi.dart';
 
 class NavMainPage extends StatefulWidget {
   const NavMainPage({super.key});
@@ -101,7 +102,7 @@ class _NavMainPageState extends State<NavMainPage> {
     //fungsi window jadwal
     Karyawan(),
 
-    Text("Notifications"),
+    TabNotifikasi(),
 
     //fungsiw window akun
     Akun(),
