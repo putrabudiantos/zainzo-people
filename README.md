@@ -1,6 +1,8 @@
-# zainozoho
+# Aplikasi Absensi berbasis online yang tersedia di platform Mobile Android, dan Web. 
 
-A new Flutter project.
+Zainzo People adalah aplikasi android dan tersedia untuk versi web.
+Aplikasi ini masih dalam tahap pengembangan kami dan akan terus kami sempurnakan
+demi kemudahan dalam penggunaan
 
 ## Getting Started
 
